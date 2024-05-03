@@ -1,7 +1,7 @@
 package com.example.onlinelearningplatform.controllers;
 
-import com.example.onlinelearningplatform.dto.LoginUserDto;
-import com.example.onlinelearningplatform.dto.UserDto;
+import com.example.onlinelearningplatform.dto.user.LoginUserDto;
+import com.example.onlinelearningplatform.dto.user.UserDto;
 import com.example.onlinelearningplatform.models.User;
 import com.example.onlinelearningplatform.service.UserDetailsServiceImp;
 import com.example.onlinelearningplatform.service.services.UserService;
@@ -23,7 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-
 public class AuthController {
 
     private UserService userService;

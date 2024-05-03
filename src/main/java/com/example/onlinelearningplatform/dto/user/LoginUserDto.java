@@ -1,4 +1,4 @@
-package com.example.onlinelearningplatform.dto;
+package com.example.onlinelearningplatform.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

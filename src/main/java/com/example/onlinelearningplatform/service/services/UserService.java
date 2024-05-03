@@ -1,6 +1,6 @@
 package com.example.onlinelearningplatform.service.services;
 
-import com.example.onlinelearningplatform.dto.UserDto;
+import com.example.onlinelearningplatform.dto.user.UserDto;
 import com.example.onlinelearningplatform.models.User;
 
 import java.util.List;
