@@ -25,6 +25,7 @@ public class MenuController {
     private final MenuService menuService;
     private final MenuTransformer menuTransformer;
 
+
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String create(Model model){
@@ -54,13 +55,13 @@ public class MenuController {
         return "menu-list";
     }
 
-    @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String getMenuById(@PathVariable("id") long id, Model model) {
-        Menu menu = menuService.readById(id);
-        MenuDto menuDto = menuTransformer.toDto(menu);
-        model.addAttribute("menu", menuDto);
-        return "menu-details";
+    @GetMapping("/dishes/{menuId}")
+    public String getMenuDishes(@PathVariable("menuId") Long menuId, Model model) {
+        Menu menu = menuService.readById(menuId);
+        List<Dish> dishes = menu.getDishes();
+        model.addAttribute("menu", menu);
+        model.addAttribute("dishes", dishes);
+        return "menu-dishes";
     }
 
     @GetMapping("/update/{id}")

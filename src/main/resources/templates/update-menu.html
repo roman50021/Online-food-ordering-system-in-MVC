@@ -12,13 +12,18 @@
 </head>
 <body>
 <div class="all">
-    <h2>Update Dish Item</h2>
+    <h2>Update Menu</h2>
     <form th:action="@{|/menu/update/${menu.id}|}" method="post" th:object="${menu}">
         <input type="hidden" th:field="${id}">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name" th:field="*{name}">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="name">Description:</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></span>
         </div>
         <button type="submit" class="btn-container">Update</button>
     </form>

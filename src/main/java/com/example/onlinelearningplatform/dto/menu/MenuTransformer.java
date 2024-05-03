@@ -11,6 +11,7 @@ public class MenuTransformer {
         return MenuDto.builder()
                 .id(menu.getId())
                 .name(menu.getName())
+                .description(menu.getDescription())
                 .build();
     }
 
@@ -18,6 +19,7 @@ public class MenuTransformer {
         return Menu.builder()
                 .id(menuDto.getId())
                 .name(menuDto.getName())
+                .description(menuDto.getDescription())
                 .build();
     }
 }

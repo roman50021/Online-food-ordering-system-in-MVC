@@ -19,6 +19,11 @@
             <input type="text" class="form-control" id="name" th:field="*{name}">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
         </div>
+        <div class="form-group">
+            <label for="name">Description:</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{name}" class="text-danger"></span>
+        </div>
         <button type="submit" class="btn-container">Submit</button>
     </form>
 </div>

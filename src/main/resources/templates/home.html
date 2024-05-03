@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/home.css">
 </head>
+<body>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Online Food Ordering App</a>
@@ -19,9 +21,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{|/dish/list|}" href="#">Menu</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">My Orders</a>
                 </li>
             </ul>
@@ -30,11 +29,27 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
                 <button class="btn btn-logout ms-2" type="submit" formaction="/logout">Sign out</button>
             </form>
-<!--            <a href="#" class="nav-link">-->
-<!--                <img src="/static/images/profile-circle.svg" alt="Profile" style="height: 30px; width: 30px; border-radius: 50%;">-->
-<!--            </a>-->
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="row">
+        <!-- Используем th:each для перебора списка меню и создания карточек -->
+        <div th:each="menu : ${menus}" class="col-md-3 mb-3">
+            <div class="card text-center mb-3 h-100" style="width: 18rem;">
+<!--                Требует подключение к облачному хранилищу-->
+<!--                <img th:src="@{/path/to/your/image.jpg}" class="card-img-top" alt="Menu Image"> -->
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${menu.name}"></h5>
+                    <p class="card-text" th:text="${menu.description}"></p>
+                    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-3"> <!-- Используем позиционирование абсолютное для кнопки -->
+                        <a th:href="@{/menu/dishes/{menuId}(menuId=${menu.id})}" class="btn btn-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+</body>
 </html>

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class MenuServiceImpl implements MenuService {
@@ -47,5 +49,16 @@ public class MenuServiceImpl implements MenuService {
     public List<Menu> getAll() {
         List<Menu> menus = menuRepository.findAll();
         return menus.isEmpty() ? new ArrayList<>() : menus;
+    }
+    @Override
+    public List<Dish> getDishesByMenuId(long menuId) {
+        Optional<Menu> menuOptional = menuRepository.findById(menuId);
+        if (menuOptional.isPresent()) {
+            Menu menu = menuOptional.get();
+            return menu.getDishes(); // Предполагается, что у класса Menu есть метод getDishes() для получения списка блюд
+        } else {
+            // Меню с указанным ID не найдено
+            throw new RuntimeException("Menu not found with id: " + menuId);
+        }
     }
 }

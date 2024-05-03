@@ -21,6 +21,7 @@ public class Menu {
     private Long id;
 
     private String name;
+    private String description;
 
     @OneToMany(mappedBy = "menu")
     private List<Dish> dishes;

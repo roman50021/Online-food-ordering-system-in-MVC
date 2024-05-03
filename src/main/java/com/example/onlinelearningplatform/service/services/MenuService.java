@@ -12,4 +12,5 @@ public interface MenuService {
     void delete(long id);
 
     List<Menu> getAll();
+    List<Dish> getDishesByMenuId(long menuId);
 }
