@@ -1,6 +1,6 @@
 package com.example.onlinelearningplatform.service.services;
 
-import com.example.onlinelearningplatform.dto.menu.MenuDto;
+import com.example.onlinelearningplatform.models.Dish;
 import com.example.onlinelearningplatform.models.Menu;
 
 import java.util.List;

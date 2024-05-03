@@ -33,7 +33,7 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "menu_item_id")
     )
-    private List<Menu> items;
+    private List<Dish> items;
 
     boolean paid;
 

@@ -1,0 +1,76 @@
+/* Общие стили */
+body {
+    background-color: #03071d;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Стили для кнопок */
+.btn-info {
+    background-color: #218838;
+    border-color: #218838;
+    color: #fff;
+    width: 150px;
+    height: 40px;
+}
+
+/* Стили для контейнера кнопок */
+.btn-container {
+    display: flex; /* Используем flexbox */
+    justify-content: flex-end; /* Располагаем элементы вправо */
+    margin-bottom: 20px; /* Добавляем небольшой отступ снизу */
+}
+
+/* Стили для кнопок */
+.btn-info {
+    background-color: #218838;
+    border-color: #218838;
+    color: #fff;
+    width: 200px;
+    height: 60px;
+    margin-left: 10px; /* Добавляем отступ между кнопками */
+}
+
+.btn-info:hover {
+    background-color: #235e03;
+    border-color: #235e03;
+}
+
+.btn-info:hover {
+    background-color: #235e03;
+    border-color: #235e03;
+}
+
+/* Стили для таблицы */
+.table {
+    color: #ffffff;
+    margin: 0;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Стили для заголовка таблицы */
+.table th {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Стили для текста в таблице */
+.table td {
+    color: #ffffff;
+}
+
+/* Стили для ссылок */
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

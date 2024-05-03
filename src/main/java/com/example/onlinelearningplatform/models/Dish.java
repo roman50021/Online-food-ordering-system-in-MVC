@@ -6,22 +6,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "menu")
-public class Menu {
-
+@Table(name = "dish")
+public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    private long id;
     private String name;
+    private String description;
+    private double servingWeight;
+    private double price;
 
-    @OneToMany(mappedBy = "menu")
-    private List<Dish> dishes;
+    @ManyToOne
+    @JoinColumn(name = "menu_id")
+    private Menu menu;
 }

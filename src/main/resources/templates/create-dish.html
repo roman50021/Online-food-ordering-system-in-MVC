@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <title>Create New Dish</title>
+</head>
+<body>
+<div class="all">
+    <h2>Create New Dish</h2>
+    <form th:action="@{/dish/create}" method="post" th:object="${dish}">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="servingWeight">Serving Weight:</label>
+            <input type="text" class="form-control" id="servingWeight" th:field="*{servingWeight}">
+            <span th:if="${#fields.hasErrors('servingWeight')}" th:errors="*{servingWeight}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" class="form-control" id="price" th:field="*{price}">
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="menuId">Menu ID:</label>
+            <input type="text" class="form-control" id="menuId" th:field="*{menuId}">
+            <span th:if="${#fields.hasErrors('menuId')}" th:errors="*{menuId}" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn-container">Submit</button>
+    </form>
+</div>
+</body>
+</html>

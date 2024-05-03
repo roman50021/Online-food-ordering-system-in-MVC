@@ -4,9 +4,9 @@ import com.example.onlinelearningplatform.models.Order;
 import java.util.List;
 
 public interface OrderService {
-    Order create(Order menu);
+    Order create(Order order);
     Order readById(long id);
-    Order update(Order menu);
+    Order update(Order order);
     void delete(long id);
     List<Order> getByUserId(long userId);
 }

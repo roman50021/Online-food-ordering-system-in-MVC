@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class MenuDto {
-    private long id;
+    private Long id;
     private String name;
-    private String description;
-    private double servingWeight;
-    private double price;
 }

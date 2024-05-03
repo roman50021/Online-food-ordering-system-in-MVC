@@ -1,7 +1,10 @@
 package com.example.onlinelearningplatform.controllers;
 
+import com.example.onlinelearningplatform.dto.dish.DishDto;
+import com.example.onlinelearningplatform.dto.dish.DishTransformer;
 import com.example.onlinelearningplatform.dto.menu.MenuDto;
 import com.example.onlinelearningplatform.dto.menu.MenuTransformer;
+import com.example.onlinelearningplatform.models.Dish;
 import com.example.onlinelearningplatform.models.Menu;
 import com.example.onlinelearningplatform.service.services.MenuService;
 import jakarta.validation.Valid;
@@ -10,7 +13,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,7 +43,7 @@ public class MenuController {
         return "redirect:/menu/list";
     }
 
-    @GetMapping("/lista")
+    @GetMapping("/list")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String getMenuList(Model model) {
         List<Menu> menus = menuService.getAll();
@@ -50,17 +52,6 @@ public class MenuController {
                 .collect(Collectors.toList());
         model.addAttribute("menus", menuDtos);
         return "menu-list";
-    }
-
-    @GetMapping("/list")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String getMenuListForUser(Model model) {
-        List<Menu> menus = menuService.getAll();
-        List<MenuDto> menuDtos = menus.stream()
-                .map(menuTransformer::toDto)
-                .collect(Collectors.toList());
-        model.addAttribute("menus", menuDtos);
-        return "menu-userlist";
     }
 
     @GetMapping("/{id}")
@@ -77,7 +68,7 @@ public class MenuController {
     public String updateMenuForm(@PathVariable("id") long id, Model model) {
         Menu menu = menuService.readById(id);
         MenuDto menuDto = menuTransformer.toDto(menu);
-        model.addAttribute("menuDto", menuDto);
+        model.addAttribute("menu", menuDto);
         return "update-menu";
     }
 
@@ -99,6 +90,4 @@ public class MenuController {
         menuService.delete(id);
         return "redirect:/menu/list";
     }
-
-
 }
