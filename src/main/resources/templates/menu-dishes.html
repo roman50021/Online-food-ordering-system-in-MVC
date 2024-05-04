@@ -12,6 +12,11 @@
 <body>
 <div class="all">
     <h2>List of Dish</h2>
+    <div class="btn-container">
+        <form th:action="@{/home}" method="get">
+            <input class="btn-info btn-lg" type="submit" value="Home">
+        </form>
+    </div>
     <br>
     <table class="table">
         <thead>
@@ -34,11 +39,31 @@
             <td th:text="${dish.servingWeight}"/>
             <td th:text="${dish.price}"/>
             <td>
-                <a th:href="@{|/order/add/${dish.id}|}">Add</a>
+                <form th:action="@{/order/add/{dishId}(dishId=${dish.id})}" method="post">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".add-to-order").click(function() {
+            var dishId = $(this).data("dish-id");
+            $.ajax({
+                type: "POST",
+                url: "/order/add-item/" + dishId,
+                success: function(response) {
+                    alert("Блюдо добавлено в заказ!");
+                },
+                error: function(xhr, status, error) {
+                    alert("Произошла ошибка при добавлении блюда в заказ: " + error);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -24,8 +26,9 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private String email;
     private String address;
+
+    private LocalDateTime createdAt;
 
     @ManyToMany
     @JoinTable(
@@ -34,6 +37,13 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "menu_item_id")
     )
     private List<Dish> items;
+
+    public List<Dish> getItems() {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        return items;
+    }
 
     boolean paid;
 

@@ -4,17 +4,22 @@ import com.example.onlinelearningplatform.dto.dish.DishDto;
 import com.example.onlinelearningplatform.dto.dish.DishTransformer;
 import com.example.onlinelearningplatform.dto.menu.MenuDto;
 import com.example.onlinelearningplatform.dto.menu.MenuTransformer;
-import com.example.onlinelearningplatform.models.Dish;
-import com.example.onlinelearningplatform.models.Menu;
+import com.example.onlinelearningplatform.models.*;
+import com.example.onlinelearningplatform.service.services.DishService;
 import com.example.onlinelearningplatform.service.services.MenuService;
+import com.example.onlinelearningplatform.service.services.OrderService;
+import com.example.onlinelearningplatform.service.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +29,6 @@ import java.util.stream.Collectors;
 public class MenuController {
     private final MenuService menuService;
     private final MenuTransformer menuTransformer;
-
 
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -92,3 +96,4 @@ public class MenuController {
         return "redirect:/menu/list";
     }
 }
+

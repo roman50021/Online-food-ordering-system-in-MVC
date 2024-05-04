@@ -9,4 +9,5 @@ public interface OrderService {
     Order update(Order order);
     void delete(long id);
     List<Order> getByUserId(long userId);
+    Order addItemToOrder(long orderId, long dishId);
 }
